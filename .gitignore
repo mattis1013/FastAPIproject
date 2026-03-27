@@ -1,4 +1,5 @@
-/archive/
 __pycache__
 .idea
-archive.zip
+blog-env/
+.env
+blog.db
