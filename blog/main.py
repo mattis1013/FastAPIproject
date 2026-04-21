@@ -3,31 +3,17 @@
 
 
 
-from typing import List
-from fastapi import FastAPI, Depends, status, Response, HTTPException
-from .database import engine, SessionLocal
-from . import models, schemas
-from sqlalchemy.orm import Session
-from .hashing import Hash
+from fastapi import FastAPI,
+from .database import engine, get_db
+from . import models
+from .routers import blog, user
 app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
 
+app.include_router(blog.router)
 
-def get_db():
-    db= SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
-@app.post('/blog',status_code=status.HTTP_201_CREATED,tags=['blog'])
-def create(request: schemas.Blog, db: Session = Depends(get_db)):
-    new_blog = models.Blog(title=request.title, body=request.body,user_id=1)
-    db.add(new_blog)
-    db.commit()
-    db.refresh(new_blog)
-    return new_blog
 
 @app.delete('/blog/{id}',status_code=status.HTTP_204_NO_CONTENT,tags=['blog'])
 def annihilate(id,db: Session = Depends(get_db)):
@@ -47,12 +33,6 @@ def update(id, request: schemas.Blog, db: Session = Depends(get_db)):
     blog.update(request.dict())
     db.commit()
     return 'updated'
-
-
-@app.get('/blog',response_model=List[schemas.ShowBlog],tags=['blog'])
-def all(db: Session = Depends(get_db)):
-    blogs = db.query(models.Blog).all()
-    return blogs
 
 
 
