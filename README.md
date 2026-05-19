@@ -41,22 +41,24 @@ JSON Web Token (JWT)
 ## Project structure
 
 Le projet contient deux points d’entrée (main.py) :
+```text
 project/
 │
 ├── main.py
 ├── requirements.txt
 │
 └── blog/
-├── main.py
-├── database.py
-├── models.py
-├── schemas.py
-├── hashing.py
-├── token.py
-└── routers/
-├── auth.py
-├── user.py
-├── blog.py
+    ├── main.py
+    ├── database.py
+    ├── models.py
+    ├── schemas.py
+    ├── hashing.py
+    ├── token.py
+    └── routers/
+        ├── auth.py
+        ├── user.py
+        ├── blog.py
+```
 ---
 
 ## Explication de la structure
