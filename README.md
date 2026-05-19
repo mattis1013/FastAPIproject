@@ -1,12 +1,12 @@
-## Objectif du projet
-
-Apprendre à construire une API REST complète avec architecture modulaire via routers, authentification JWT, gestion de base de données avec SQLAlchemy, validation des données avec Pydantic et sécurisation des mots de passe avec bcrypt.
-
 # FastAPI Blog API - Authentication and CRUD
 
 ## Description
 
 Ce projet est une API REST développée avec FastAPI permettant de gérer des utilisateurs et des blogs avec un système d’authentification basé sur JWT.
+
+## Objectif du projet
+
+Apprendre à construire une API REST complète avec architecture modulaire via routers, authentification JWT, gestion de base de données avec SQLAlchemy, validation des données avec Pydantic et sécurisation des mots de passe avec bcrypt.
 
 ## Stack technique
 
@@ -37,8 +37,6 @@ JSON Web Token (JWT)
 - Protection des routes avec Bearer Token
 
 ## Structure du projet
-
-## Project structure
 
 Le projet contient deux points d’entrée (main.py) :
 ```text
