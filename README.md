@@ -38,18 +38,72 @@ JSON Web Token (JWT)
 
 ## Structure du projet
 
-project/  
-├── main.py  
-├── database.py  
-├── models.py  
-├── schemas.py  
-├── hashing.py  
-├── token.py  
-└── routers/  
-&nbsp;&nbsp;&nbsp;&nbsp;├── auth.py  
-&nbsp;&nbsp;&nbsp;&nbsp;├── user.py  
-&nbsp;&nbsp;&nbsp;&nbsp;├── blog.py  
+## Project structure
 
+Le projet contient deux points d’entrée (main.py) :
+
+project/
+│
+├── main.py                # fichier de test / ancien entrypoint
+├── requirements.txt
+│
+└── blog/                 # application principale
+    ├── main.py           # entrypoint réel de l’API (celui à lancer)
+    ├── database.py
+    ├── models.py
+    ├── schemas.py
+    ├── hashing.py
+    ├── token.py
+    └── routers/
+        ├── auth.py
+        ├── user.py
+        ├── blog.py
+
+---
+
+## Explication de la structure
+
+### main.py (racine)
+Fichier de test ou ancien entrypoint.  
+Il n’est pas utilisé pour lancer l’application principale.
+
+### blog/main.py (ENTRYPOINT PRINCIPAL)
+C’est le vrai point de départ de l’API FastAPI.  
+C’est ce fichier qui est exécuté avec Uvicorn :
+
+uvicorn blog.main:app --reload --port 8000
+
+---
+
+### database.py
+Configuration de la base de données et session SQLAlchemy.
+
+### models.py
+Définition des tables de la base de données.
+
+### schemas.py
+Validation des données avec Pydantic.
+
+### hashing.py
+Gestion du hashage des mots de passe avec bcrypt.
+
+### token.py
+Création et validation des tokens JWT.
+
+---
+
+## routers/
+
+Séparation des routes par fonctionnalité.
+
+### auth.py
+Authentification (login + JWT).
+
+### user.py
+Gestion des utilisateurs.
+
+### blog.py
+CRUD des blogs.
 
 ## Flux d’authentification
 
