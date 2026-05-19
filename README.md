@@ -44,11 +44,11 @@ Le projet contient deux points d’entrée (main.py) :
 
 project/
 │
-├── main.py                # fichier de test / ancien entrypoint
+├── main.py
 ├── requirements.txt
 │
-└── blog/                 # application principale
-    ├── main.py           # entrypoint réel de l’API (celui à lancer)
+└── blog/
+    ├── main.py
     ├── database.py
     ├── models.py
     ├── schemas.py
